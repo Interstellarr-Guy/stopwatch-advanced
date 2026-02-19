@@ -74,7 +74,7 @@ export default function App() {
   if (Math.abs(now - elapsed) >= DISPLAY_INTERVAL) {
     setElapsed(now);
   }
-}, 10);
+}, 50);
 
 
   } else {
@@ -154,38 +154,48 @@ export default function App() {
   lastLapIdRef.current = null;
 }, [laps]);
 
+// keyboard shorcuts
+const runningRef = useRef(running);
+
+useEffect(() => {
+  runningRef.current = running;
+}, [running]);
+
 useEffect(() => {
   const handler = (e) => {
     const tag = e.target.tagName;
 
-    // 🛑 Allow normal typing inside inputs
     if (tag === "INPUT" || tag === "TEXTAREA") {
-      // Enter saves note
-      if (e.code === "Enter") {
-        e.target.blur();
-      }
+      if (e.code === "Enter") e.target.blur();
       return;
     }
 
-    // ▶️ Space = Pause / Resume
     if (e.code === "Space") {
       e.preventDefault();
-      toggle();
+      toggleRef.current();
     }
 
-    // 🏁 Enter = Add Lap
     if (e.code === "Enter") {
       e.preventDefault();
-      if (running) lap();
+      if (runningRef.current) {
+        lapRef.current();
+      }
     }
   };
 
   window.addEventListener("keydown", handler);
   return () => window.removeEventListener("keydown", handler);
-}, [running, elapsed]);
+}, []);
 
 
-    
+const toggleRef = useRef(toggle);
+const lapRef = useRef(lap);
+
+useEffect(() => {
+  toggleRef.current = toggle;
+  lapRef.current = lap;
+});
+
                     //Return 
      
   return (
