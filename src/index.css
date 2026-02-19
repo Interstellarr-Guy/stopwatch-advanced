@@ -1,0 +1,181 @@
+:root {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --card: #f1f5f9;
+  --accent: #4f46e5;
+}
+
+body.dark {
+  --bg: #020617;
+  --text: #f8fafc;
+  --card: #0f172a;
+  --accent: #38bdf8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+}
+
+.heading{
+  padding-right: 10px;
+}
+.app {
+  max-width: 420px;
+  margin: auto;
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/*
+.timer {
+  font-family: "Orbitron", monospace;
+  font-size: 3rem;
+  text-align: center;
+  margin: 1.5rem 0;
+} */
+
+.timer {
+  font-family: "Orbitron", monospace;
+  font-size: 3rem;
+  letter-spacing: 0.12em;
+  text-align: center;
+  color: var(--accent);
+}
+
+.timer span {
+  display: inline-block;
+  min-width: 2ch;
+}
+
+.timer span.glow {
+  text-shadow:
+    0 0 4px var(--accent),
+    0 0 10px rgba(56, 189, 248, 0.6),
+    0 0 18px rgba(56, 189, 248, 0.4);
+  transition: text-shadow 0.12s ease;
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+button {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+}
+
+button.secondary {
+  background: var(--card);
+  color: var(--text);
+}
+
+.theme {
+  background: var(--card);
+}
+
+.laps {
+  margin-top: 1rem;
+  background: var(--card);
+  padding: 0.6rem;
+  border-radius: 12px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.lap {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.lap span {
+  min-width: 90px;
+  font-size: 0.9rem;
+}
+
+.lap input {
+  flex: 1;
+  border-radius: 6px;
+  border: none;
+  padding: 0.3rem;
+}
+
+.hint {
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 0.6rem;
+}
+
+@media (min-width: 768px) {
+  .timer {
+    font-size: 3.5rem;
+  }
+}
+
+.lap-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  animation: slideIn 0.3s ease-out both;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+li{
+  list-style-type: none;
+  padding-bottom: 5px;
+  font-size: 30px;
+
+}
+/* lap class (line: 187)
+<div className="laps">
+        {laps.map((lap, i) => (
+          <div className="lap" key={lap.id}>
+            <span>#{laps.length - i} {formatTime(lap.time)}</span>
+            <input
+  value={lap.note}
+  maxLength={15}
+  placeholder="note"
+  onChange={(e) => {
+    setLaps((prev) =>
+      prev.map((l) =>
+        l.id === lap.id ? { ...l, note: e.target.value } : l
+      )
+    );
+  }}
+/>
+
+          </div>
+        ))}
+      </div>
+
+      */
