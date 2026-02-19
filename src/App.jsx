@@ -154,36 +154,42 @@ export default function App() {
   lastLapIdRef.current = null;
 }, [laps]);
 
+useEffect(() => {
+  const handler = (e) => {
+    const tag = e.target.tagName;
+
+    // 🛑 Allow normal typing inside inputs
+    if (tag === "INPUT" || tag === "TEXTAREA") {
+      // Enter saves note
+      if (e.code === "Enter") {
+        e.target.blur();
+      }
+      return;
+    }
+
+    // ▶️ Space = Pause / Resume
+    if (e.code === "Space") {
+      e.preventDefault();
+      toggle();
+    }
+
+    // 🏁 Enter = Add Lap
+    if (e.code === "Enter") {
+      e.preventDefault();
+      if (running) lap();
+    }
+  };
+
+  window.addEventListener("keydown", handler);
+  return () => window.removeEventListener("keydown", handler);
+}, [running, elapsed]);
+
+
     
                     //Return 
      
   return (
-    <div className="app" tabIndex={0}
-  onKeyDown={(e) => {
-  const tag = e.target.tagName;
-
-  // Allow typing inside inputs
-  if (tag === "INPUT" || tag === "TEXTAREA") {
-    if (e.code === "Enter") {
-      e.target.blur(); // save note
-    }
-    return;
-  }
-
-  // Space = Start / Pause
-  if (e.code === "Space") {
-    e.preventDefault();
-    toggle();
-  }
-
-  // Enter = Add Lap
-  if (e.code === "Enter") {
-    e.preventDefault();
-    if (running) lap();
-  }
-}}
-
- >
+    <div className="app">
       <header>
         <h1 className="heading">⏱ Stopwatch</h1>
         <button className="theme" onClick={() => setDark(!dark)}>
