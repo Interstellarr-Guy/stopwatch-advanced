@@ -168,12 +168,27 @@ li{
 }
 .lap-item {
   display: grid;
-  grid-template-columns: 4ch 14ch 220px;
+  grid-template-columns: 4ch 12ch 200px;
   align-items: center;
   gap: 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
 }
 
+/* Zebra stripes */
+.lap-item:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.03);
+}
 
+.lap-item:nth-child(even) {
+  background: rgba(255, 255, 255, 0.07);
+}
+.write {
+ background-color: #cacaca;
+ border-radius: 8px;
+ padding-top: 4px;
+ padding-bottom: 4px;
+}
 
 
 

@@ -258,7 +258,7 @@ useEffect(() => {
       <span className="lap-time">
         {formatTime(lap.time)}
       </span>
-      <input
+      <input className="write"
   ref={(el) => {
     if (!el) return;
     if (!lap?.id) return;
