@@ -156,6 +156,27 @@ li{
   font-size: 30px;
 
 }
+
+
+
+.laps-list {
+  width: 520px;          /* 🔑 HARD LOCK */
+  margin-inline: auto;
+  padding: 0;            /* remove UL default padding */
+  list-style: none;      /* safety */
+  /*outline: 2px solid red; */ /* debug */
+}
+.lap-item {
+  display: grid;
+  grid-template-columns: 4ch 14ch 220px;
+  align-items: center;
+  gap: 12px;
+}
+
+
+
+
+
 /* lap class (line: 187)
 <div className="laps">
         {laps.map((lap, i) => (

@@ -53,12 +53,21 @@ export default function App() {
 };
   
    // Format time
-  const formatTime = (ms) => {
+ /* const formatTime = (ms) => {
     const m = Math.floor(ms / 60000);
     const s = Math.floor((ms % 60000) / 1000);
     const cs = Math.floor((ms % 1000) / 10);
     return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}.${String(cs).padStart(2, "0")}`;
-  };
+  };   */
+
+  const formatTime = (ms) => {
+  const h = Math.floor(ms / 3600000);
+  const m = Math.floor((ms % 3600000) / 60000);
+  const s = Math.floor((ms % 60000) / 1000);
+  const cs = Math.floor((ms % 1000) / 10);
+
+  return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}.${String(cs).padStart(2, "0")}`;
+};
 
 
   // Start / Pause
