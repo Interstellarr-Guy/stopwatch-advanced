@@ -1,8 +1,20 @@
+html,
+body {
+  overflow-x: hidden;
+}
+/*
 :root {
   --bg: #ffffff;
   --text: #0f172a;
   --card: #f1f5f9;
   --accent: #4f46e5;
+} */
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(0.75rem, 4vw, 2rem);
+  text-align: center;
 }
 
 body.dark {
@@ -38,13 +50,6 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-/*
-.timer {
-  font-family: "Orbitron", monospace;
-  font-size: 3rem;
-  text-align: center;
-  margin: 1.5rem 0;
-} */
 
 .timer {
   font-family: "Orbitron", monospace;
@@ -158,9 +163,10 @@ li{
 }
 
 
-
+ 
 .laps-list {
-  width: 520px;          /* 🔑 HARD LOCK */
+  width: 100%;
+  max-width: 520px;          /* 🔑 HARD LOCK */
   margin-inline: auto;
   padding: 0;            /* remove UL default padding */
   list-style: none;      /* safety */
@@ -173,6 +179,7 @@ li{
   gap: 12px;
   border-radius: 6px;
   transition: background-color 0.2s ease;
+  min-width: 0;
 }
 
 /* Zebra stripes */
@@ -189,7 +196,19 @@ li{
  padding-top: 4px;
  padding-bottom: 4px;
 }
+@media (max-width: 480px) {
+  .lap-item {
+    grid-template-columns:
+      3ch        /* lap index */
+      11ch       /* time */
+      1fr;       /* note */
+    gap: 8px;
+  }
 
+  .timer {
+    width: 16ch;
+  }
+}
 
 
 /* lap class (line: 187)
