@@ -200,13 +200,14 @@ li{
   .lap-item {
     grid-template-columns:
       3ch        /* lap index */
-      11ch       /* time */
+      10ch       /* time */
       1fr;       /* note */
-    gap: 8px;
+      font-size: 19px;
+    gap:6px;
   }
 
   .timer {
-    width: 16ch;
+    width:8ch;
   }
 }
 
