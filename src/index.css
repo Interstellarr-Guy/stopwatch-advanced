@@ -4,10 +4,10 @@ body {
 }
 
 :root {
-  --bg: #676767;
+  --bg: #6b5b5b;
   --text: #0f172a;
   --card: #c2c2c2;
-  --accent: #4f46e5;
+  --accent: #761807;
 } 
 
 #root {
