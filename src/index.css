@@ -1,237 +1,145 @@
-html,
-body {
-  overflow-x: hidden;
-}
 
-:root {
-  --bg: #b6aaaa;
-  --text: #0f172a;
-  --card: #c5cacf;
-  --accent: #4f711c;
-} 
+/* ===== GLOBAL RESET ===== */
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: clamp(0.75rem, 4vw, 2rem);
-  text-align: center;
-}
-
-body.dark {
-  --bg: #202121;
-  --text: #f8fafc;
-  --card: #0f172a;
-  --accent: #38bdf8;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@500;600;700&family=Audiowide&family=Share+Tech+Mono&display=swap');
+ 
 * {
   box-sizing: border-box;
 }
 
-body {
+html,
+body,
+#root {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
   background: var(--bg);
   color: var(--text);
   font-family: system-ui, sans-serif;
 }
 
-.heading{
-  padding-right: 10px;
-}
-.app {
-  max-width: 420px;
-  margin: auto;
-  padding: 1rem;
-  min-height: 100vh;
+/* ===== MAIN APP LAYOUT ===== */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
-header {
+/* ===== NAVBAR: 10% HEIGHT ===== */
+.navbar {
+  flex: 0 0 10%;
+  width: 100%;
+  min-height: 0;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
-}
+  justify-content: space-between;
 
-.timer {
-  font-family: "Orbitron", monospace;
-  font-size: 3rem;
-  letter-spacing: 0.12em;
-  text-align: center;
-  color: var(--accent);
-}
+  padding: 0 2rem;
 
-.timer span {
-  display: inline-block;
-  min-width: 2ch;
-}
-
-.timer span.glow {
-  text-shadow:
-    0 0 4px var(--accent),
-    0 0 10px rgba(56, 189, 248, 0.6),
-    0 0 18px rgba(56, 189, 248, 0.4);
-  transition: text-shadow 0.12s ease;
-}
-
-.controls {
-  display: flex;
-  gap: 0.5rem;
-}
-
-button {
-  flex: 1;
-  padding: 0.6rem;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  background: var(--accent);
+  /* DEBUG COLOR */
+  background-color: #2563eb;
   color: white;
 }
 
-button.secondary {
-  background: var(--card);
-  color: var(--text);
-}
-
-.theme {
-  background: var(--card);
-}
-
-.laps {
-  margin-top: 1rem;
-  background: var(--card);
-  padding: 0.6rem;
-  border-radius: 12px;
-  max-height: 260px;
-  overflow-y: auto;
-}
-
-.lap {
+/* ===== MAIN BODY: 90% HEIGHT ===== */
+.main-body {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.4rem;
-}
-
-.lap span {
-  min-width: 90px;
-  font-size: 0.9rem;
-}
-
-.lap input {
   flex: 1;
-  border-radius: 6px;
-  border: none;
-  padding: 0.3rem;
-}
-
-.hint {
-  text-align: center;
-  font-size: 0.8rem;
-  opacity: 0.7;
-  margin-top: 0.6rem;
-}
-
-@media (min-width: 768px) {
-  .timer {
-    font-size: 3.5rem;
-  }
-}
-
-.lap-item {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-
-  animation: slideIn 0.3s ease-out both;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-li{
-  list-style-type: none;
-  padding-bottom: 5px;
-  font-size: 30px;
-
-}
-
-
- 
-.laps-list {
+  min-height: 0;
   width: 100%;
-  max-width: 520px;          /* 🔑 HARD LOCK */
-  margin-inline: auto;
-  padding: 0;            /* remove UL default padding */
-  list-style: none;      /* safety */
-  /*outline: 2px solid red; */ /* debug */
+  overflow: hidden;
 }
-.lap-item {
-  display: grid;
-  grid-template-columns: 4ch 12ch 150px;
-  align-items: center;
-  gap: 8px;
-  border-radius: 6px;
-  transition: background-color 0.2s ease;
+
+/* ===== SIDEBAR: 25% WIDTH ===== */
+.sidebar {
+  flex: 0 0 25%;
   min-width: 0;
+  height: 100%;
+  padding: 1rem;
+  overflow-y: auto;
+
+  /* DEBUG COLOR */
+  background-color: #f59e0b;
+
+  transition:
+    flex-basis 0.3s ease,
+    padding 0.3s ease;
 }
 
-/* Zebra stripes */
-.lap-item:nth-child(odd) {
-  background: rgba(255, 255, 255, 0.03);
+/* ===== SIDEBAR CLOSED ===== */
+.sidebar.closed {
+  flex-basis: 0;
+  padding: 0;
+  overflow: hidden;
+  border: none;
 }
 
-.lap-item:nth-child(even) {
-  background: rgba(255, 255, 255, 0.07);
-}
-.write {
- background-color: #cacaca;
- border-radius: 8px;
- padding-top: 4px;
- padding-bottom: 4px;
-}
-@media (max-width: 480px) {
-  .lap-item {
-    grid-template-columns:
-      3ch        /* lap index */
-      10ch       /* time */
-      1fr;       /* note */
-      font-size: 19px;
-    gap:6px;
-  }
+/* ===== CONTENT: REMAINING 75% ===== */
+.content-area {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
 
-  .timer {
-    width:8ch;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem;
+  overflow: auto;
+
+  /* DEBUG COLOR */
+  background-color: #22c55e;
 }
 
+/* ===== SIDEBAR MENU ===== */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
 
-/* lap class (line: 187)
-<div className="laps">
-        {laps.map((lap, i) => (
-          <div className="lap" key={lap.id}>
-            <span>#{laps.length - i} {formatTime(lap.time)}</span>
-            <input
-  value={lap.note}
-  maxLength={15}
-  placeholder="note"
-  onChange={(e) => {
-    setLaps((prev) =>
-      prev.map((l) =>
-        l.id === lap.id ? { ...l, note: e.target.value } : l
-      )
-    );
-  }}
-/>
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
 
-          </div>
-        ))}
-      </div>
+.sidebar-item:hover,
+.sidebar-item.active {
+  background: rgba(0, 0, 0, 0.1);
+}
 
-      */
+/* Timer Style */
+.timer {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+
+  color: #38bdf8;
+  text-align: center;
+
+  text-shadow:
+    0 0 5px rgba(56, 189, 248, 0.8),
+    0 0 15px rgba(56, 189, 248, 0.5),
+    0 0 30px rgba(56, 189, 248, 0.3);
+}
+
+.navbar { background-color: #1e3a8a; }
+.sidebar { background-color: #92400e; }
+.content-area { background-color: #166534; }
