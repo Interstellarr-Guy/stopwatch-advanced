@@ -208,13 +208,105 @@ body {
   align-items: center;
 }
 
+
+/* ===== SPOTIFY STYLE CONTROLS ===== */
 .controls {
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: 12px;
+
   width: 100%;
-  max-width: 320px;
+  max-width: 360px;
+  margin: 8px auto;
 }
+
+/* All stopwatch buttons */
+.controls button {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+
+  padding: 0 18px;
+  border: none;
+  border-radius: 999px;
+
+  font-family: "Circular", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* START / PAUSE - Spotify Green */
+.controls button:first-child {
+  background: #da3503;
+  color: #121212;
+}
+
+/* LAP - Dark Grey */
+.controls button:nth-child(2) {
+  background: #282828;
+  color: #ffffff;
+}
+
+/* RESET - Outlined */
+.controls button:nth-child(3) {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #b3b3b3;
+}
+
+/* Hover effect */
+.controls button:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+/* Start hover */
+.controls button:first-child:hover {
+  background: #df521f;
+  box-shadow: 0 4px 16px rgba(30, 215, 96, 0.3);
+}
+
+/* Lap hover */
+.controls button:nth-child(2):hover {
+  background: #383838;
+}
+
+/* Reset hover */
+.controls button:nth-child(3):hover {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Click effect */
+.controls button:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+/* Disabled */
+.controls button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .controls {
+    gap: 8px;
+  }
+
+  .controls button {
+    height: 40px;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+}
+
 
 /* Timer Style */
 .timer {
@@ -246,11 +338,6 @@ body {
   overflow: hidden;
 }
 
-/* Navbar: 10% */
-.navbar {
-  flex: 0 0 11%;
-  min-height: 0;
-}
 
 /* Remaining 90% */
 .main-body {
@@ -353,3 +440,112 @@ body {
     min-width: 2.5ch;
   }
 }
+
+
+/*laps */
+
+/* ===== LAP WRAPPER ===== */
+.laps-container {
+  width: 100%;
+  max-width: 560px;
+  margin: 20px auto 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #172b45;
+}
+
+/* ===== HEADER + ROW GRID ===== */
+.laps-header,
+.laps-list .lap-item {
+  display: grid;
+  /* grid-template-columns: 55px minmax(0, 1fr) 160px; */
+  grid-template-columns: 45px 1fr 1fr 130px;
+  align-items: center;
+  column-gap: 12px;
+}
+
+/* ===== HEADER ===== */
+.laps-header {
+  padding: 12px 16px;
+  background: #243b55;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* ===== SCROLLABLE LIST ===== */
+.laps-list {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  max-height: 560px;
+
+  flex: 0 1 auto;
+  overflow-y: auto;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  
+}
+
+/* ===== ROW ===== */
+.laps-list .lap-item {
+  margin: 0;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: white;
+  border-bottom: 1px solid #334155;
+}
+
+/* ===== NUMBER ===== */
+.lap-index {
+  font-variant-numeric: tabular-nums;
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+/* ===== TIME ===== */
+.lap-time  {
+  font-family: sans-serif;
+  font-size: 15px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.lap-time::before {
+  content: "⏱ ";
+  margin-right: 2px;
+  color: #38bdf8;
+}
+.lap-duration {
+  font-size: 15px;
+  color: #38f895;
+}
+
+/* ===== NOTE ===== */
+.laps-list .write {
+  width: 100%;
+  min-width: 0;
+  padding: 7px 10px;
+  border: 1px solid #475569;
+  border-radius: 6px;
+  background: #334155;
+  color: white;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .laps-header,
+  .laps-list .lap-item {
+    grid-template-columns: 35px minmax(0, 1fr) 100px;
+    gap: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .lap-time {
+    font-size: 12px;
+  }
+}
+

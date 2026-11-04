@@ -76,16 +76,43 @@ export default function Stopwatch() {
     setRunning(false);
   };
 
-  const lap = () => {
-    if (!running) return;
-    const newLap = {
-      id: crypto.randomUUID(),
-      time: elapsed,
-      note: "",
-    };
-    lastLapIdRef.current = newLap.id;
-    setLaps((prev) => [newLap, ...prev]);
+  // const lap = () => {
+  //   if (!running) return;
+  //   const newLap = {
+  //     id: crypto.randomUUID(),
+  //     time: elapsed,
+  //     note: "",
+  //   };
+  //   lastLapIdRef.current = newLap.id;
+  //   setLaps((prev) => [newLap, ...prev]);
+  // };
+  
+const lap = () => {
+  if (!running || laps.length >= 100) return;
+
+  // Total elapsed time at the moment of the lap
+  const currentTime = Date.now() - startTimeRef.current;
+
+  // Previous lap's total time
+  const previousTime =
+    laps.length > 0 ? laps[0].time : 0;
+
+  // Time taken for this specific lap
+  const lapDuration = currentTime - previousTime;
+
+  const newLap = {
+    id: crypto.randomUUID(),
+    number: laps.length + 1,
+    time: currentTime,
+    lapTime: lapDuration,
+    note: "",
   };
+
+  lastLapIdRef.current = newLap.id;
+
+  setLaps((prev) => [newLap, ...prev]);
+};
+
 
   useEffect(() => {
     const next = getTimeParts(elapsed);
@@ -166,6 +193,14 @@ export default function Stopwatch() {
         <button className="secondary" onClick={reset}>Reset</button>
       </div>
 
+       <div className="laps-container">
+ <div className="laps-header">
+  <span>Lap</span>
+  <span>Lap Time</span>
+  <span>Total Time</span>
+  <span>Note</span>
+</div>
+
       <ul className="laps-list">
         {laps.map((lapItem, i) => (
           <li
@@ -184,8 +219,22 @@ export default function Stopwatch() {
               }
             }}
           >
-            <span className="lap-index">{laps.length - i}</span>
-            <span className="lap-time">{formatTime(lapItem.time)}</span>
+            
+                               {/* Lap Number: 1, 2, 3 ... */}
+                <span className="lap-index">
+                {lapItem.number}
+                </span>
+
+                               {/* Individual Lap Duration */}
+                <span className="lap-duration">
+                {formatTime(lapItem.lapTime)}
+                </span>
+
+                               {/* Total Stopwatch Time */}
+                <span className="lap-time">
+                {formatTime(lapItem.time)}
+                </span>
+
             <input
               className="write"
               ref={(el) => {
@@ -207,6 +256,7 @@ export default function Stopwatch() {
           </li>
         ))}
       </ul>
+      </div>
       <p className="hint">Press <b>Space</b> to Start / Pause</p>
     </div>
   );
