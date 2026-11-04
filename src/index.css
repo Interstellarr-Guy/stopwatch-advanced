@@ -1,6 +1,6 @@
 
 /* ===== GLOBAL RESET ===== */
-
+@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@500;600;700&family=Audiowide&family=Share+Tech+Mono&display=swap');
  
 * {
@@ -139,14 +139,11 @@ body {
 
 /* ===== SIDEBAR: 25% WIDTH ===== */
 .sidebar {
-  flex: 0 0 25%;
+  flex: 0 0 20%;
   min-width: 0;
   height: 100%;
   padding: 1rem;
   overflow-y: auto;
-
-  /* DEBUG COLOR */
-  background-color: #f59e0b;
 
   transition:
     flex-basis 0.3s ease,
@@ -172,10 +169,10 @@ body {
   align-items: center;
   justify-content: flex-start;
 
-  padding: 40px 20px;
-  overflow-y: auto;
+  padding: 24px 20px;
+  /* overflow-y: auto; */
+  overflow: hidden;
 
-  background-color: #f59e0b;
 }
 
 /* ===== SIDEBAR MENU ===== */
@@ -198,6 +195,30 @@ body {
 .sidebar-item:hover,
 .sidebar-item.active {
   background: rgba(0, 0, 0, 0.1);
+}
+
+/* ===== RIGHT SIDEBAR ===== */
+.right-sidebar {
+  flex: 0 0 20%;
+  min-width: 0;
+  height: 100%;
+
+  padding: 16px;
+  overflow-y: auto;
+
+
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .right-sidebar {
+    display: none;
+  }
+
+  .sidebar {
+    flex-basis: 20%;
+  }
 }
 
 /* Stopwatch */
@@ -325,10 +346,6 @@ body {
     0 0 30px rgba(56, 189, 248, 0.3);
 }
 
-.navbar { background-color: #1e3a8a; }
-.sidebar { background-color: #92400e; }
-.content-area { background-color: #166534; }
-
 /* ===== MAIN APP LAYOUT ===== */
 .app-layout {
   display: flex;
@@ -349,7 +366,7 @@ body {
 
 /* Sidebar: 25% */
 .sidebar {
-  flex: 0 0 25%;
+  flex: 0 0 18%;
   min-width: 0;
 }
 
