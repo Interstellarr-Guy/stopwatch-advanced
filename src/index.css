@@ -2,13 +2,13 @@ html,
 body {
   overflow-x: hidden;
 }
-/*
+
 :root {
-  --bg: #ffffff;
+  --bg: #b8aaaa;
   --text: #0f172a;
-  --card: #f1f5f9;
-  --accent: #4f46e5;
-} */
+  --card: #bfcad3;
+  --accent: #2b7a3b;
+} 
 
 #root {
   max-width: 1280px;
