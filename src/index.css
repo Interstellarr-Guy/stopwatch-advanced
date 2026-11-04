@@ -4,11 +4,11 @@ body {
 }
 
 :root {
-  --bg: #b8aaaa;
+  --bg: #ffffff;
   --text: #0f172a;
-  --card: #bfcad3;
-  --accent: #2b7a3b;
-} 
+  --card: #f1f5f9;
+  --accent: #4f46e5;
+} */
 
 #root {
   max-width: 1280px;
@@ -18,7 +18,7 @@ body {
 }
 
 body.dark {
-  --bg: #020617;
+  --bg: #202121;
   --text: #f8fafc;
   --card: #0f172a;
   --accent: #38bdf8;
@@ -138,7 +138,7 @@ button.secondary {
 
 .lap-item {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
 
   animation: slideIn 0.3s ease-out both;
@@ -174,9 +174,9 @@ li{
 }
 .lap-item {
   display: grid;
-  grid-template-columns: 4ch 12ch 200px;
+  grid-template-columns: 4ch 12ch 150px;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   border-radius: 6px;
   transition: background-color 0.2s ease;
   min-width: 0;
