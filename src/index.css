@@ -34,19 +34,98 @@ body {
 
 /* ===== NAVBAR: 10% HEIGHT ===== */
 .navbar {
-  flex: 0 0 10%;
+  flex: 0 0 7%;
   width: 100%;
   min-height: 0;
 
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 2rem;
+  padding: 0 28px;
 
   /* DEBUG COLOR */
   background-color: #2563eb;
   color: white;
+}
+
+/* ===== LEFT SECTION ===== */
+.nav-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+
+  min-width: 0;
+}
+
+/* ===== HEADING ===== */
+.navbar .heading {
+  margin: 0;
+  padding: 0;
+
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: white;
+}
+
+/* ===== NAVBAR BUTTONS ===== */
+.navbar button {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+  font-size: 20px;
+  background-color: #3557a5;
+  color: white;
+}
+
+/* ===== MENU BUTTON ===== */
+.navbar .menu-btn {
+  flex-shrink: 0;
+}
+
+/* ===== THEME BUTTON ===== */
+.navbar .theme {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* ===== HOVER ===== */
+.navbar button:hover {
+  background-color: #4b70c5;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0 12px;
+  }
+
+  .nav-left {
+    gap: 10px;
+  }
+
+  .navbar .heading {
+    font-size: 1rem;
+  }
+
+  .navbar button {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 /* ===== MAIN BODY: 90% HEIGHT ===== */
@@ -87,18 +166,16 @@ body {
   flex: 1;
   min-width: 0;
   min-height: 0;
-  height: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
-  padding: 1rem;
-  overflow: auto;
+  padding: 40px 20px;
+  overflow-y: auto;
 
-  /* DEBUG COLOR */
-  background-color: #22c55e;
+  background-color: #f59e0b;
 }
 
 /* ===== SIDEBAR MENU ===== */
@@ -123,6 +200,22 @@ body {
   background: rgba(0, 0, 0, 0.1);
 }
 
+/* Stopwatch */
+.stopwatch-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 320px;
+}
+
 /* Timer Style */
 .timer {
   font-family: "Orbitron", sans-serif;
@@ -143,3 +236,120 @@ body {
 .navbar { background-color: #1e3a8a; }
 .sidebar { background-color: #92400e; }
 .content-area { background-color: #166534; }
+
+/* ===== MAIN APP LAYOUT ===== */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Navbar: 10% */
+.navbar {
+  flex: 0 0 11%;
+  min-height: 0;
+}
+
+/* Remaining 90% */
+.main-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Sidebar: 25% */
+.sidebar {
+  flex: 0 0 25%;
+  min-width: 0;
+}
+
+/* Content: 75% */
+.content-area {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+
+/* ===== STOPWATCH WRAPPER ===== */
+.stopwatch-container {
+  width: 100%;
+  max-width: 650px;
+  min-width: 0;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ===== DIGITAL TIMER ===== */
+.timer {
+  font-family: "Orbitron", monospace;
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  white-space: nowrap;
+  letter-spacing: 0;
+
+  color: #38bdf8;
+  line-height: 1.4;
+}
+
+/* Each span contains TWO digits */
+.timer span {
+  display: inline-block;
+  flex: 0 0 2.5ch;
+  width: 2.5ch;
+  min-width: 2.5ch;
+
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Glow changes brightness, not size */
+.timer span.glow {
+  text-shadow:
+    0 0 5px #38bdf8,
+    0 0 12px rgba(56, 189, 248, 0.7),
+    0 0 22px rgba(56, 189, 248, 0.4);
+}
+
+/* ===== BUTTONS ===== */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.controls button {
+  flex: 1;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .timer {
+    font-size: clamp(1rem, 4vw, 1.8rem);
+  }
+
+  .timer span {
+    flex-basis: 2.5ch;
+    width: 2.5ch;
+    min-width: 2.5ch;
+  }
+}
