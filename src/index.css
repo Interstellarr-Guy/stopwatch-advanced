@@ -4,11 +4,11 @@ body {
 }
 
 :root {
-  --bg: #ffffff;
+  --bg: #b6aaaa;
   --text: #0f172a;
-  --card: #f1f5f9;
-  --accent: #4f46e5;
-} */
+  --card: #c5cacf;
+  --accent: #4f711c;
+} 
 
 #root {
   max-width: 1280px;
