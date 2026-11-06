@@ -69,7 +69,7 @@ body {
   font-size: clamp(1rem, 2vw, 1.8rem);
   font-weight: 700;
   line-height: 1.2;
-  color: white;
+  /* color: white; */
 }
 
 /* ===== NAVBAR BUTTONS ===== */
@@ -566,3 +566,35 @@ body {
   }
 }
 
+/* Dark Mode 06-11 */
+/* Light mode */
+.app-layout {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Dark mode */
+.app-layout.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.app-layout.dark .navbar {
+  background-color: #181818;
+  color: #ffffff;
+}
+
+.app-layout.dark .sidebar {
+  background-color: #202020;
+  color: #ffffff;
+}
+
+.app-layout.dark .content-area {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.app-layout.dark .right-sidebar {
+  background-color: #181818;
+  color: #ffffff;
+}

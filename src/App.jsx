@@ -15,7 +15,7 @@ export default function App() {
   }, [dark]);
 
   return (
-    <div className="app-layout">
+    <div className={`app-layout ${dark ? "dark" : ""}`}>
       <Navbar
         toggleSidebar={() => setSidebarOpen(!sidebarOpen)}
         dark={dark}
