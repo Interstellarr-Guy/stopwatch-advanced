@@ -263,19 +263,19 @@ body {
     box-shadow 0.2s ease;
 }
 
-/* START / PAUSE - Spotify Green */
+/* START / PAUSE  */
 .controls button:first-child {
   background: #da3503;
   color: #121212;
 }
 
-/* LAP - Dark Grey */
+/* LAP */
 .controls button:nth-child(2) {
   background: #282828;
   color: #ffffff;
 }
 
-/* RESET - Outlined */
+/* RESET  */
 .controls button:nth-child(3) {
   background: transparent;
   color: #ffffff;
@@ -337,7 +337,7 @@ body {
   letter-spacing: 0.08em;
   font-variant-numeric: tabular-nums;
 
-  color: #38bdf8;
+  color: #090a0a;
   text-align: center;
 
   text-shadow:

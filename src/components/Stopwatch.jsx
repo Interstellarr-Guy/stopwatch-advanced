@@ -76,17 +76,6 @@ export default function Stopwatch() {
     setRunning(false);
   };
 
-  // const lap = () => {
-  //   if (!running) return;
-  //   const newLap = {
-  //     id: crypto.randomUUID(),
-  //     time: elapsed,
-  //     note: "",
-  //   };
-  //   lastLapIdRef.current = newLap.id;
-  //   setLaps((prev) => [newLap, ...prev]);
-  // };
-  
 const lap = () => {
   if (!running || laps.length >= 100) return;
 
