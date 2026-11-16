@@ -182,8 +182,8 @@ const lap = () => {
         <button className="secondary" onClick={reset}>Reset</button>
       </div>
 
-       <div className="laps-container">
- <div className="laps-header">
+       <div className="laps-container font-black">
+ <div className="laps-header font-black">
   <span>Lap</span>
   <span>Lap Time</span>
   <span>Total Time</span>
