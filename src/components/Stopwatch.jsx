@@ -168,12 +168,12 @@ const lap = () => {
   }, []);
 
   return (
-    <div className="stopwatch-container">
+    <div className="stopwatch-container overflow-y-auto scroll-bar">
       <div className="timer">
         <span className={glow.h ? "glow" : ""}>{display.h}</span>:
         <span className={glow.m ? "glow" : ""}>{display.m}</span>:
         <span className={glow.s ? "glow" : ""}>{display.s}</span>.
-        <span className={glow.cs ? "glow" : ""}>{display.cs}</span>
+        <span className={glow.cs ? "glow": ""}>{display.cs}</span>
       </div>
 
       <div className="controls">
@@ -182,7 +182,7 @@ const lap = () => {
         <button className="secondary" onClick={reset}>Reset</button>
       </div>
 
-       <div className="laps-container font-black">
+       <div className="laps-container font-black ">
  <div className="laps-header font-black">
   <span>Lap</span>
   <span>Lap Time</span>
@@ -190,7 +190,7 @@ const lap = () => {
   <span>Note</span>
 </div>
 
-      <ul className="laps-list">
+      <ul className="laps-list overflow-y-auto scrollbar-none">
         {laps.map((lapItem, i) => (
           <li
             key={lapItem.id}
